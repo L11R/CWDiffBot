@@ -117,7 +117,7 @@ bot.onText(/^\uD83D\uDCE6Твой склад/, function (msg) {
 		r.table('users')
 			.get(msg.from.id)
 			.update({
-				stocks: r.row('stocks')//.orderBy('date')
+				stocks: r.row('stocks').orderBy(r.desc('date'))
 					.insertAt(0, {
 						text: msg.text,
 						date: r.epochTime(msg.forward_date)
